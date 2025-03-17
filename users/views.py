@@ -19,7 +19,7 @@ class RegisterView(CreateView):
 
         send_mail(
             subject='Добро пожаловать!',
-            message='Спасибо за регистрацию на нашем сайте "SkyStore"',
+            message='Спасибо за регистрацию на нашем сайте "__"',
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[form.cleaned_data.get('email')],
             fail_silently=False,

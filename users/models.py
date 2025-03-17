@@ -10,8 +10,9 @@ class User(AbstractUser):
     email = models.EmailField(unique=True, verbose_name="Эл.почта")
     name = models.CharField(max_length=45, verbose_name='имя', help_text='Введите имя')
 
-    phone_number = models.CharField(max_length=15, verbose_name='Номер телефона', help_text='Введите номер телефона', blank=True, null=True)
-
+    phone_number = models.CharField(max_length=15, verbose_name='Номер телефона', help_text='Введите номер телефона',
+                                    blank=True, null=True)
+    is_moder = models.BooleanField(default=False, verbose_name="модератор")
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 

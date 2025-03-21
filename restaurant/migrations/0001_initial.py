@@ -32,9 +32,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "content",
-                    models.TextField(
-                        help_text="Введите содержимое", verbose_name="содержимое"
-                    ),
+                    models.TextField(help_text="Введите содержимое", verbose_name="содержимое"),
                 ),
                 (
                     "image",

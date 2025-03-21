@@ -17,11 +17,11 @@ class HabitsSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
     def validate(self, attrs):
-        linked_habit = attrs.get('linked_habit')
-        pleasant_habit_flag = attrs.get('pleasant_habit_flag')
-        time_to_perform = attrs.get('time_to_perform')
-        frequency = attrs.get('frequency')
-        reward = attrs.get('reward')
+        linked_habit = attrs.get("linked_habit")
+        pleasant_habit_flag = attrs.get("pleasant_habit_flag")
+        time_to_perform = attrs.get("time_to_perform")
+        frequency = attrs.get("frequency")
+        reward = attrs.get("reward")
 
         if linked_habit and pleasant_habit_flag:
             raise serializers.ValidationError("Привычки не могут быть активны одновременно")
@@ -37,5 +37,3 @@ class HabitsSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("У связанной привычки не может быть вознаграждения")
 
         return attrs
-
-

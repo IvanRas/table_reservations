@@ -6,4 +6,3 @@
 #     class Meta:
 #         model = Employee
 #         fields = ('email', 'password1', 'password2')
-

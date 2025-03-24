@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h1>Добро пожаловать в Table Reservations</h1>
+<p>
+
+    <a href="{% url 'restaurant:user_list' %}" class="btn btn-primary">Перейти к Гостям</a>
+    <a href="{% url 'restaurant:table_create' %}" class="btn btn-primary">Перейти к созданию стола</a>
+    <a href="{% url 'restaurant:table_list' %}" class="btn btn-primary">Перейти к столам</a>
+
+</p>
+{% endblock %}

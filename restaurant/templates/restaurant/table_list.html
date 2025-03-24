@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Список столов{% endblock %}
+{% block content %}
+<h2>Список столов</h2>
+
+<div class="container">
+    <div class="row text-center">
+        {% for table in tables %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ table.number }}</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$ {{ table.price }}</h1>
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="{% url 'tabel:table_detail' table.pk %}">Подробно</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

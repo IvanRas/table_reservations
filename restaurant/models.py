@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 # Create your models here.
 
@@ -14,6 +15,8 @@ class Table(models.Model):
         verbose_name="фото",
         help_text="Загрузити фотографию",
     )
+    # guest = models.ForeignKey("User", on_delete=models.CASCADE, verbose_name='категория',
+    #                              help_text='Введите категорию', blank=True, null=True)
     table_occupiers = models.DateTimeField(verbose_name="занятость стола", default=240)
     updated_at = models.DateTimeField(auto_now=True, verbose_name="дата последнего изменения", blank=True, null=True)
     # reservation = models.BooleanField(default=False, verbose_name="Бронь")
@@ -27,18 +30,7 @@ class Table(models.Model):
         ordering = ["number"]
 
 
-class User(models.Model):
-    last_name = models.CharField(max_length=250, verbose_name='Ф.И.О.', help_text='Введите Ф.И.О')
-    email = models.EmailField(max_length=250, verbose_name='Email ', help_text='Введите Email', unique=True)
-    comment = models.TextField(max_length=250, verbose_name='комментарий', help_text='Введите комментарий')
-    is_active = models.BooleanField(default=True)
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-
-    def __str__(self):
-        return f'{self.email}'
-
-    class Meta:
-        verbose_name = 'получатель'
-        verbose_name_plural = 'получатели'
+class Order(models.Model):
+    table = models.ForeignKey(Table, on_delete=models.SET_NULL, blank=True, null=True)
+    time = models.TimeField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)

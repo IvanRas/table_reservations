@@ -3,12 +3,23 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-<h1>Добро пожаловать в Table Reservations</h1>
-<p>
 
-    <a href="{% url 'restaurant:user_list' %}" class="btn btn-primary">Перейти к Гостям</a>
+    {% if user.is_authenticated and user.is_superuser %}
+<h1>Админ понель в Table Reservations</h1> <!--    Разделение для модера и гостя</a>-->
+<p>
+    <a href="{% url 'users:user_list' %}" class="btn btn-primary">Перейти к Гостям</a>
     <a href="{% url 'restaurant:table_create' %}" class="btn btn-primary">Перейти к созданию стола</a>
     <a href="{% url 'restaurant:table_list' %}" class="btn btn-primary">Перейти к столам</a>
-
 </p>
+    {% else %}
+<h1>Table Reservations</h1> <!--    Разделение для модера и гостя</a>-->
+
+    {% if user.is_authenticated %}
+<p>
+    <a href="{% url 'users:user_list' %}" class="btn btn-primary">Перейти к Гостям</a>
+</p>
+    {% else %}
+
+    {% endif %}
+    {% endif %}
 {% endblock %}

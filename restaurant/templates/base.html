@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
     <title>{% block title %}Сайт бронирования столов{% endblock %}</title>
+    <meta property="og:title" content="Сервис бронирования Restoplace – это программа для ресторанов.">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,20 +16,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'restaurant:user_list' %}">Гость</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'restaurant:table_list' %}">Список столов</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'restaurant:table_list' %}">Заказать стол</a>
-                    </li>
-                </ul>
-            </div>
         </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <ul class="navbar-nav ml-auto">

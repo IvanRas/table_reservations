@@ -17,6 +17,7 @@ class User(AbstractUser):
         null=True,
     )
     is_moder = models.BooleanField(default=False, verbose_name="модератор")
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 

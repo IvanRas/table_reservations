@@ -1,4 +1,4 @@
-{% extends 'restaurant/home.html'%}
+{% extends 'home.html'%}
 {% load my_tags %}
 {% block content %}
 <div class="album py-5 bg-body-tertiary">
@@ -8,10 +8,13 @@
           <div class="card shadow-sm">
             <img src="{{ table.image| media_filter }}" class="card-img-top" alt="{{ table.number }}">
             <div class="card-body">
-              <p class="card-text"> {{ table.number }}: {{ table.price }}</p>
+              <p class="card-text"> Стол № {{ table.number }} </p>
+              <p class="card-text">  Цена: {{ table.price }}</p>
+              <p class="card-text"> Время </p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
+                <div class="btn-group, d-grid gap-2">
                   <a class="btn btn-primary" href="{% url 'restaurant:home' %}">Назад</a>
+                  <a href="{% url 'restaurant:table_delete' table.pk %}" class="btn btn-danger">Удалить</a>
                 </div>
               </div>
             </div>

@@ -1,21 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
-from .forms import TableForm
-
-
 # from .services import get_products_by_category, CategoryService
-from django.views.generic import (
-    CreateView,
-    DeleteView,
-    DetailView,
-    ListView,
-    UpdateView, TemplateView,
-)
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView, UpdateView
 
-from restaurant.models import Table
+from restaurant.models import Order, Table
+
+from .forms import OrderForm, TableForm
 from .permissions import IsModerator
-
 
 # Create your views here.
 
@@ -24,7 +16,7 @@ from .permissions import IsModerator
 class HomeListView(ListView):
     model = Table
     template_name = "restaurant/base.html"
-    context_object_name = "table"
+    context_object_name = "tables"
 
 
 class TableCreateView(CreateView):
@@ -65,4 +57,40 @@ class TableDeleteView(LoginRequiredMixin, DeleteView):
 
 
 class HomeView(TemplateView):
-    template_name = 'home.html'
+    template_name = "home.html"
+
+
+class OrderListView(ListView):
+    model = Order
+    template_name = "restaurant/order_list.html"
+    context_object_name = "table"
+
+
+class OrderCreateView(LoginRequiredMixin, CreateView):
+    model = Order
+    form_class = OrderForm
+    template_name = "restaurant/order_create.html"
+    success_url = reverse_lazy("restaurant:home")
+    permission_classes = [IsModerator]
+
+
+class OrderUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Order
+    template_name = "restaurant/order_create.html"
+    success_url = reverse_lazy("restaurant:home")
+    permission_classes = [IsModerator]
+
+
+# @method_decorator(cache_page(60 * 15), name='dispatch')
+class OrderDetailView(LoginRequiredMixin, DetailView):
+    model = Order
+    template_name = "restaurant/order_detail.html"
+    context_object_name = "table"
+    permission_classes = [IsModerator]
+
+
+class OrderDeleteView(LoginRequiredMixin, DeleteView):
+    model = Order
+    template_name = "restaurant/order_delete.html"
+    success_url = reverse_lazy("restaurant:home")
+    permission_classes = [IsModerator]

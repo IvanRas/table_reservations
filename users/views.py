@@ -1,19 +1,13 @@
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from users.forms import UserRegistrationForm
 from users.models import User
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.urls import reverse_lazy
 
 from .forms import UserForm
-
-from django.views.generic import (
-    CreateView,
-    DeleteView,
-    ListView,
-    UpdateView,
-)
 
 
 class RegisterView(CreateView):
@@ -38,8 +32,8 @@ class RegisterView(CreateView):
 
 class UserListView(ListView):
     model = User
-    template_name = 'user_list.html'
-    context_object_name = 'users'
+    template_name = "user_list.html"
+    context_object_name = "users"
 
     # def get_queryset(self):
     #     queryset = cache.get('user_queryset')
@@ -52,13 +46,13 @@ class UserListView(ListView):
 class UserCreateView(LoginRequiredMixin, CreateView):
     model = User
     form_class = UserForm
-    success_url = reverse_lazy('user_list')
+    success_url = reverse_lazy("user_list")
 
 
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = User
-    template_name = 'user_form.html'
-    success_url = reverse_lazy('user_list')
+    template_name = "user_form.html"
+    success_url = reverse_lazy("user_list")
 
     def get_form_class(self):
         if self.request.user.is_superuser:
@@ -72,5 +66,5 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class UserDeleteView(DeleteView):
     model = User
-    template_name = 'user_delete.html'
-    success_url = reverse_lazy('user_list')
+    template_name = "user_delete.html"
+    success_url = reverse_lazy("user_list")

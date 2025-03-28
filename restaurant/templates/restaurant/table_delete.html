@@ -4,7 +4,7 @@
 
 {% block content %}
 <h2>Удаление стол</h2>
-<p>Вы уверены, что хотите удалить стол "{{ table.number }}"?</p>
+<p>Вы уверены, что хотите удалить стол номер "{{ table.number }}"?</p>
 <form method="post">
     {% csrf_token %}
     <button type="submit" class="btn btn-danger">Удалить</button>

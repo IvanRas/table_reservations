@@ -127,6 +127,7 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
@@ -146,3 +147,5 @@ AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "/"
 
 LOGOUT_REDIRECT_URL = "/"
+
+STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")

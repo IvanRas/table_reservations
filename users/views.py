@@ -1,4 +1,5 @@
 from django.conf import settings
+from rest_framework import generics, filters, viewsets, permissions, status
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
@@ -6,8 +7,10 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from users.forms import UserRegistrationForm
 from users.models import User
+# Payment
 
 from .forms import UserForm
+# from .serializers import PaymentSerializer
 
 
 class RegisterView(CreateView):
@@ -68,3 +71,16 @@ class UserDeleteView(DeleteView):
     model = User
     template_name = "user_delete.html"
     success_url = reverse_lazy("user_list")
+
+
+# class PaymentList(generics.ListAPIView):
+#     queryset = Payment.objects.all()
+#     serializer_class = PaymentSerializer
+#     filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+#     filterset_fields = {
+#         "paid_course": ["exact"],
+#         "paid_lesson": ["exact"],
+#         "payment_method": ["exact"],
+#     }
+#     ordering_fields = ["payment_date"]
+#     ordering = ["payment_date"]

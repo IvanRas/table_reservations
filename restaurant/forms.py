@@ -1,13 +1,14 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+
 from .models import Order, Table
 
 
 class TableForm(forms.ModelForm):
     class Meta:
         model = Table
-        fields = ["number", "sitting", "price", "image", "table_occupiers"]
+        fields = ["number", "sitting", "price", "image"]
 
     def clean_number(self):
         number = self.cleaned_data.get("number")
@@ -25,12 +26,9 @@ class TableForm(forms.ModelForm):
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        exclude = ("owner",)
+        fields = ["table", "time", "date"]
         widgets = {
-            'date': forms.DateInput(
-                format=('%Y-%m-%d'),
-                attrs={'class': 'form-control',
-                       'placeholder': 'Выберите дату',
-                       'type': 'date'
-                       }),
+            "date": forms.DateInput(
+                format=("%Y-%m-%d"), attrs={"class": "form-control", "placeholder": "Выберите дату", "type": "date"}
+            ),
         }

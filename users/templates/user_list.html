@@ -13,13 +13,13 @@
         </tr>
     </thead>
     <tbody>
-        {% for recipient in recipients %}
+        {% for user in users %}
         <tr>
             <td>{{ user.last_name }}</td>
             <td>{{ user.email }}</td>
             <td>
-                <a href="{% url 'restaurant:user_update' user.pk %}" class="btn btn-warning">Редактировать</a>
-                <a href="{% url 'restaurant:user_delete' user.pk %}" class="btn btn-danger">Удалить</a>
+                <a href="{% url 'users:user_update' user.pk %}" class="btn btn-warning">Редактировать</a>
+                <a href="{% url 'users:user_delete' user.pk %}" class="btn btn-danger">Удалить</a>
             </td>
         </tr>
         {% endfor %}

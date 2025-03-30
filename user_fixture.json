@@ -1,0 +1,142 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$kN46B6aDcKvxCINygklIHc$oAqvHWQhn9/U011KiuyhmtzIEtcZ1TjXzOUT+5Lz0PQ=",
+        "last_login": "2025-03-30T07:08:34.965Z",
+        "is_superuser": true,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-03-28T09:45:30.195Z",
+        "email": "admin@example.com",
+        "name": "",
+        "phone_number": null,
+        "is_moder": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$kEpd4z4jfiy7ic7xWKO2Yc$7Eut8ilaqsLWgMsP+mQbX5yl0TcFOVeAIzsTEa896/U=",
+        "last_login": "2025-03-29T11:31:46.358Z",
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-28T09:45:33.512Z",
+        "email": "User@example.com",
+        "name": "Иван Расторгуев",
+        "phone_number": "89991561213",
+        "is_moder": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$XmdxCuOxvzN7yAIxvoCZvk$sctLoQF2m6DEoxGTUozbFTQG615w03Zg3vmRIfA/EFw=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-29T11:39:48.863Z",
+        "email": "admin2@example.com",
+        "name": "Иван Расторгуев",
+        "phone_number": "89991561213",
+        "is_moder": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$4MyeAo218kCOaufEeoNVbV$VuXzGDXIxrBobgpMKOfRcsdRFzoUGAFfenYD02TTh9o=",
+        "last_login": "2025-03-30T06:14:34.632Z",
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-29T11:40:25.597Z",
+        "email": "adminQ@example.com",
+        "name": "Иван Расторгуев",
+        "phone_number": "89991561213",
+        "is_moder": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$9RupDmfE7ZDl6pWMHspWsW$xBJftPEoNjU6zdXPTpA0iPfyZuzaEGPfomItDsWt6u4=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-30T06:45:28.260Z",
+        "email": "qwe@example.com",
+        "name": "Виктор",
+        "phone_number": "89171234576",
+        "is_moder": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$C9h38lXM2TTe6WCxof7A5i$h412wrr17PekarhMlq72OWOBUAFN0SnUqM6Y4/PpGJk=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-30T06:46:35.875Z",
+        "email": "adminW@example.com",
+        "name": "",
+        "phone_number": "89171234567",
+        "is_moder": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$dSbP8tKpvUf8kVnFBwzfiB$ypD2D3lLYjwgz+d13N2en2/R3V8EFEJreTrKMplwsp4=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-30T06:47:49.076Z",
+        "email": "adminE@example.com",
+        "name": "",
+        "phone_number": null,
+        "is_moder": false,
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

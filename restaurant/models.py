@@ -1,12 +1,7 @@
 from django.db import models
-from rest_framework.exceptions import ValidationError
 from config import settings
 
-from users.models import User
-
 # Create your models here.
-
-# time_point = ["9:00", "12:00", "15:00", "18:00"]
 
 
 class TimeSection(models.Model):
@@ -28,11 +23,8 @@ class Table(models.Model):
         verbose_name="фото",
         help_text="Загрузити фотографию",
     )
-    # guest = models.ForeignKey("User", on_delete=models.CASCADE, verbose_name='категория',
-    #                              help_text='Введите категорию', blank=True, null=True)
     table_occupiers = models.BooleanField(verbose_name="занятость стола", default=False)
     updated_at = models.DateTimeField(auto_now=True, verbose_name="дата последнего изменения", blank=True, null=True)
-    # reservation = models.BooleanField(default=False, verbose_name="Бронь")
 
     def __str__(self):
         return f"{self.number}"
@@ -45,7 +37,7 @@ class Table(models.Model):
 
 class Order(models.Model):
     table = models.ForeignKey(Table, on_delete=models.SET_NULL, blank=True, null=True)
-    time = models.ForeignKey(TimeSection, on_delete=models.SET_NULL, blank=True, null=True)
+    time = models.ForeignKey(TimeSection, on_delete=models.SET_NULL, blank=True, null=True, default="9:00")
     date = models.DateField()
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,

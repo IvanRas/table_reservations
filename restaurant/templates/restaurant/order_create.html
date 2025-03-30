@@ -7,7 +7,9 @@
             {% csrf_token %}
             {{ form.non_field_errors }}
             {{ form.as_p }}
+            <p class="card-text"> Стоимость {{ table.price }}</p>
             <button type="submit" class="btn btn-primary">Сохранить</button>
+
                 <a class="btn btn-primary" href="{% url 'restaurant:home' %}">Назад</a>
         </form>
     </div>

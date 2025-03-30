@@ -2,7 +2,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from rest_framework.exceptions import PermissionDenied
 
-# from .services import get_products_by_category, CategoryService
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView, UpdateView
 
 from restaurant.models import Order, Table
@@ -68,7 +67,14 @@ class OrderListView(ListView):
 
     def get_queryset(self):
         # Получаем заказ, принадлежащие текущему пользователю
-        return Order.objects.filter(owner=self.request.user or IsModerator)
+        return Order.objects.filter(owner=self.request.user)
+
+
+class OrderListAdminView(ListView):
+    model = Order
+    template_name = "restaurant/order_list_admin.html"
+    context_object_name = "orders"
+    permission_classes = [IsModerator]
 
 
 class OrderCreateView(LoginRequiredMixin, CreateView):
@@ -76,7 +82,10 @@ class OrderCreateView(LoginRequiredMixin, CreateView):
     form_class = OrderForm
     template_name = "restaurant/order_create.html"
     success_url = reverse_lazy("restaurant:home")
-    permission_classes = [IsModerator]
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 class OrderUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -98,11 +107,9 @@ class OrderDetailView(LoginRequiredMixin, DetailView):
     model = Order
     template_name = "restaurant/order_detail.html"
     context_object_name = "orders"
-    permission_classes = [IsModerator]
 
 
 class OrderDeleteView(LoginRequiredMixin, DeleteView):
     model = Order
     template_name = "restaurant/order_delete.html"
     success_url = reverse_lazy("restaurant:home")
-    permission_classes = [IsModerator]

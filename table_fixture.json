@@ -1,0 +1,28 @@
+[
+{
+    "model": "restaurant.table",
+    "pk": 1,
+    "fields": {
+        "number": 2,
+        "sitting": 2,
+        "content": "",
+        "price": "3000",
+        "image": "",
+        "table_occupiers": false,
+        "updated_at": "2025-03-28T09:47:08.789Z"
+    }
+},
+{
+    "model": "restaurant.table",
+    "pk": 2,
+    "fields": {
+        "number": 1,
+        "sitting": 5,
+        "content": "",
+        "price": "3000",
+        "image": "",
+        "table_occupiers": false,
+        "updated_at": "2025-03-29T09:30:27.908Z"
+    }
+}
+]

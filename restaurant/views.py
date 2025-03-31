@@ -19,6 +19,12 @@ class HomeListView(ListView):
     context_object_name = "tables"
 
 
+class OccupiedTableView(ListView):
+    model = Table
+    template_name = "restaurant/base.html"
+    context_object_name = "tables"
+
+
 class TableCreateView(CreateView):
     model = Table
     form_class = TableForm
@@ -38,7 +44,7 @@ class TableUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class TableDetailView(LoginRequiredMixin, DetailView):
     model = Table
     template_name = "restaurant/table_detail.html"
-    context_object_name = "table"
+    context_object_name = "tables"
     permission_classes = [IsModerator]
 
     # def get_queryset(self):
@@ -90,7 +96,7 @@ class OrderCreateView(LoginRequiredMixin, CreateView):
 
 class OrderUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Order
-    template_name = "restaurant/order_create.html"
+    template_name = "restaurant/order_detail.html"
     success_url = reverse_lazy("restaurant:home")
     permission_classes = [IsModerator]
 

@@ -37,7 +37,7 @@ class Table(models.Model):
 
 class Order(models.Model):
     table = models.ForeignKey(Table, on_delete=models.SET_NULL, blank=True, null=True)
-    time = models.ForeignKey(TimeSection, on_delete=models.SET_NULL, blank=True, null=True, default="9:00")
+    time = models.ForeignKey(TimeSection, on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateField()
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,

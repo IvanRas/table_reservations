@@ -32,3 +32,11 @@ class OrderForm(forms.ModelForm):
                 format=("%Y-%m-%d"), attrs={"class": "form-control", "placeholder": "Выберите дату", "type": "date"}
             ),
         }
+
+    # def clean_data_and_time(self):
+    #     time = self.cleaned_data.get("date", "time")
+    #     if time in [table.number for table in Table.objects.all()]:
+    #         if time in [table.number for table in Table.objects.all()]:
+    #             raise ValidationError("такой стол уже есть")
+    #         raise ValidationError("такой стол уже есть")
+    #     return time

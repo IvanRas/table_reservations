@@ -15,7 +15,7 @@
                     {% if user.is_authenticated and user.is_superuser %}
                     <a class="btn btn-primary" href="{% url 'restaurant:order_update' orders.pk %}">Редактировать</a>
                     {% endif %}
-                    <a href="{% url 'restaurant:order_delete' orders.pk %}" class="btn btn-danger">Удалить</a>
+                    <a href="{% url 'restaurant:order_delete' orders.pk %}" class="btn btn-danger">Отменить</a>
                   </div>
                 </div>
             </div>

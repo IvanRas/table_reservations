@@ -8,10 +8,11 @@
         <div class="col-3">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
+                    <h1 class="card-title pricing-card-title"> Стол № {{ order.table.number }}</h1>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title"> {{ order.time }}</h1>
-                    <h1 class="card-title pricing-card-title"> {{ order.date }}</h1>
+                    <p class="card-text"> На {{ order.date }} </p>
+                    <p class="card-text"> В {{ order.time }}</p>
                     <div class="btn-group">
                       <a class="btn btn-primary" href="{% url 'restaurant:order_detail' order.pk %}">Подробно</a>
                     </div>

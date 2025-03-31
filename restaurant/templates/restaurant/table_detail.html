@@ -5,17 +5,17 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
+          <img src="{{ table.image| media_filter }}" class="card-img-top" alt="{{ table.number }}">
           <div class="card shadow-sm">
-            <img src="{{ table.image| media_filter }}" class="card-img-top" alt="{{ table.number }}">
             <div class="card-body">
-              <p class="card-text"> Стол № {{ table.number }} </p>
-              <p class="card-text">  Цена: {{ table.price }}</p>
-              <p class="card-text"> Время </p>
+              <p class="card-text"> Стол № {{ tables.number }} </p>
+              <p class="card-text">  Цена: {{ tables.price }} руб</p>
+              <p class="card-text">  Мест: {{ tables.sitting }} </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group, d-grid gap-2">
+                  <a class="btn btn-primary" href="{% url 'restaurant:table_update' tables.pk %}">Редактировать</a>
+                  <a href="{% url 'restaurant:table_delete' tables.pk %}" class="btn btn-danger">Удалить</a>
                   <a class="btn btn-primary" href="{% url 'restaurant:home' %}">Назад</a>
-                  <a class="btn btn-primary" href="{% url 'restaurant:table_update' table.pk %}">Редактировать</a>
-                  <a href="{% url 'restaurant:table_delete' table.pk %}" class="btn btn-danger">Удалить</a>
                 </div>
               </div>
             </div>

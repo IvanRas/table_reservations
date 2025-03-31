@@ -8,11 +8,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
 from django_filters.rest_framework import DjangoFilterBackend
-from .services import (
-    create_stripe_price,
-    create_stripe_session,
-    create_product_table
-)
+from .services import create_stripe_price, create_stripe_session, create_product_table
 
 from users.forms import UserRegistrationForm
 from users.models import User, Payment
@@ -63,7 +59,7 @@ class UserCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("user_list")
 
 
-class UserUpdateView(LoginRequiredMixin,  UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = "user_form.html"
@@ -96,9 +92,7 @@ class PaymentViewSet(CreateAPIView):
 
     def perform_create(self, serializer):
         global price, product_price
-        product_type = serializer.validated_data[
-            "product_type"
-        ]  # ' table'
+        product_type = serializer.validated_data["product_type"]  # ' table'
         table_id = serializer.validated_data["table_id"]  # ID cnjkf
 
         if product_type == "tabel":

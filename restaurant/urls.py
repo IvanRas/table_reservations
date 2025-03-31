@@ -13,7 +13,8 @@ from restaurant.views import (
     TableDeleteView,
     TableDetailView,
     TableUpdateView,
-    OrderListAdminView
+    OrderListAdminView,
+    OccupiedTableView,
 )
 
 app_name = RestaurantConfig.name
@@ -21,10 +22,12 @@ app_name = RestaurantConfig.name
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("table/table_list/", HomeListView.as_view(), name="table_list"),
+    path("table/occupied_table/", OccupiedTableView.as_view(), name="occupied_table"),
     path("table/table_create/", TableCreateView.as_view(), name="table_create"),
-    path("table/update/<int:pk>/", TableUpdateView.as_view(), name="table_update"),
-    path("table/delete/<int:pk>/", TableDeleteView.as_view(), name="table_delete"),
-    path("table/<int:pk>/", TableDetailView.as_view(), name="table_detail"),
+    path("table/table_update/<int:pk>/", TableUpdateView.as_view(), name="table_update"),
+    path("table/table_detail/<int:pk>/", TableDetailView.as_view(), name="table_detail"),
+    path("table/table_order_detail/<int:pk>/", TableDetailView.as_view(), name="table_order_detail"),
+    path("table/table_delete/<int:pk>/", TableDeleteView.as_view(), name="table_delete"),
     path("table/order_list/", OrderListView.as_view(), name="order_list"),
     path("table/order_list_admin/", OrderListAdminView.as_view(), name="order_list_admin"),
     path("table/order_create/", OrderCreateView.as_view(), name="order_create"),

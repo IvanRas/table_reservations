@@ -15,7 +15,6 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
         </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <ul class="navbar-nav ml-auto">
@@ -35,17 +34,14 @@
                 <li class="nav-item">
                     <a class="btn btn-link nav-link me-md-2" href="{% url 'users:register' %}">Регистрация</a>
                 </li>
-
             {% endif %}
-
         </ul>
     </div>
     </nav>
-
     <div class="container mt-4">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
-
     <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

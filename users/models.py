@@ -8,7 +8,13 @@ from restaurant.models import Table
 
 
 class User(AbstractUser):
-    username = None
+    username = models.CharField(
+        max_length=100,
+        verbose_name="Username",
+        blank=True,
+        null=True,
+        help_text="Введите свое имя",
+    )
     email = models.EmailField(unique=True, verbose_name="Эл.почта")
     name = models.CharField(max_length=45, verbose_name="имя", help_text="Введите имя")
 
@@ -56,9 +62,7 @@ class Payment(models.Model):
         verbose_name="Оплачиваемый заказ",
     )
 
-    amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name="Сумма платежа"
-    )
+    amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Сумма платежа")
     session_id = models.CharField(
         max_length=255,
         verbose_name="Id заказа",
@@ -66,9 +70,7 @@ class Payment(models.Model):
         null=True,
         help_text="Введите Id заказа",
     )
-    payment_link = models.URLField(
-        max_length=400, null=True, blank=True, verbose_name="Ссылка на платеж"
-    )
+    payment_link = models.URLField(max_length=400, null=True, blank=True, verbose_name="Ссылка на платеж")
     payment_method = models.CharField(max_length=10, choices=PAYMENT_METHODS)
 
     def __str__(self):

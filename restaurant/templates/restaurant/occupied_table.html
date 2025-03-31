@@ -6,6 +6,7 @@
 <div class="container">
     <div class="row text-center">
         {% for table in tables %}
+            {% if table.table_occupiers == True %}
                 <div class="col-3">
                     <div class="card mb-4 box-shadow">
                         <div class="card-header">
@@ -15,12 +16,15 @@
                         <div class="card-body">
                             <h1 class="card-title pricing-card-title"> {{ table.date }} {{ table.time | truncatechars:6 }} </h1>
                             <h1 class="card-title pricing-card-title"> Цена {{ table.price }}Руб</h1>
+                            <h1 class="card-title pricing-card-title"> Цена {{ user.email }}Руб</h1>
+
                             <div class="btn-group">
                               <a class="btn btn-primary" href="{% url 'restaurant:table_detail' table.pk %}">Подробно</a>
                             </div>
                         </div>
                     </div>
                 </div>
+           {% endif %}
         {% endfor %}
     </div>
 </div>

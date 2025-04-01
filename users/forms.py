@@ -8,12 +8,16 @@ forbidden = []
 
 
 class UserRegistrationForm(UserCreationForm):
+    """Форма для регестрация usera"""
+
     class Meta:
         model = User
         fields = ("email", "password1", "password2", "phone_number")
 
 
 class UserForm(forms.ModelForm):
+    """Форма usera"""
+
     class Meta:
         model = User
         fields = ["name", "email", "phone_number"]

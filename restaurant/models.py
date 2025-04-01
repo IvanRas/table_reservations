@@ -1,4 +1,5 @@
 from django.db import models
+
 from config import settings
 
 # Create your models here.
@@ -12,6 +13,8 @@ class TimeSection(models.Model):
 
 
 class Table(models.Model):
+    """Модуль для столов"""
+
     number = models.PositiveIntegerField(verbose_name="номер стола", help_text="Введите номер стола")
     sitting = models.PositiveIntegerField(verbose_name="мест у стола", help_text="Введите сколько мест у стола")
     content = models.TextField(verbose_name="содержимое", help_text="Введите содержимое")
@@ -36,6 +39,8 @@ class Table(models.Model):
 
 
 class Order(models.Model):
+    """Модуль для заказов"""
+
     table = models.ForeignKey(Table, on_delete=models.SET_NULL, blank=True, null=True)
     time = models.ForeignKey(TimeSection, on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateField()

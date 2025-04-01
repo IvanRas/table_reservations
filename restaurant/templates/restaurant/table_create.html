@@ -1,9 +1,10 @@
 {% extends 'home.html'%}
+
 {% block content %}
 <div class="album py-5 bg-body-tertiary">
     <div class="container mt-5">
         <h1 class="mb-4">Форма стола</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.non_field_errors }}
             {{ form.as_p }}

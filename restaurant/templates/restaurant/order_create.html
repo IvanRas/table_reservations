@@ -9,14 +9,10 @@
                     <div class="card mb-4 box-shadow">
                         <div class="card-header">
                             <img src="{{ table.image| media_filter }}" class="card-img-top" alt="{{ table.number }}">
-                            <h4 class="my-0 font-weight-normal">Стол №{{ table.order.number }}</h4>
+                            <h4 class="my-0 font-weight-normal">Стол №{{ table.number }}</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title"> {{ order.date  }} </h1>
                             <h1 class="card-title pricing-card-title"> Цена {{ table.price }}Руб</h1>
-                            <div class="btn-group">
-                              <a class="btn btn-primary" href="{% url 'restaurant:table_detail' table.pk %}">Подробно</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -28,9 +24,8 @@
         <h1 class="mb-4">Форма заказа стола</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form.non_field_errors }}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <button type="submit" class="btn btn-primary">Заказать</button>
 
                 <a class="btn btn-primary" href="{% url 'restaurant:home' %}">Назад</a>
         </form>

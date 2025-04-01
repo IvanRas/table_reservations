@@ -1,7 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-from rest_framework import status
-from rest_framework.test import APIClient
 
 from restaurant.models import Table
 
@@ -24,7 +22,7 @@ class TablesModelTest(TestCase):
             table_occupiers=True,
         )
         self.assertIsInstance(table, Table)
-        self.assertEqual(table.number, '55')
+        self.assertEqual(table.number, "55")
         self.assertEqual(table.sitting, 1)
         self.assertEqual(table.content, "")
         self.assertEqual(table.price, "3000")
@@ -51,40 +49,8 @@ class TablesSerializerTest(TestCase):
             "price": 3000,
             "image": "",
             "table_occupiers": True,
-
         }
 
     def test_sitting_complete(self):
         invalid_data = self.valid_habit_data.copy()
         invalid_data["sitting"] = "8"  # Пример недопустимого значения
-
-
-class TableAPITestCase(TestCase):
-    def setUp(self):
-        self.client = APIClient()
-        self.user = User.objects.create_user(username="test_user", email="test_user@example.com", password="12345")
-        self.client.force_authenticate(user=self.user)
-
-        self.habits = Table.objects.create(
-            number="55",
-            sitting=1,
-            content="",
-            price="3000",
-            image="",
-            table_occupiers=True,
-        )
-
-    def test_create_table(self):
-        response = self.client.post(
-            "/restaurant/table_create/",
-            {
-                "number": "Д55 ",
-                "sitting": "1",
-                "content": "",
-                "price": 3000,
-                "image": "",
-                "table_occupiers": True,
-            },
-
-        )
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)

@@ -1,11 +1,12 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-
 from .models import Order, Table
 
 
 class TableForm(forms.ModelForm):
+    """Форма для сталов"""
+
     class Meta:
         model = Table
         fields = ["number", "sitting", "price", "image"]
@@ -24,6 +25,8 @@ class TableForm(forms.ModelForm):
 
 
 class OrderForm(forms.ModelForm):
+    """Форма для заказов"""
+
     class Meta:
         model = Order
         fields = ["table", "time", "date"]
@@ -33,10 +36,14 @@ class OrderForm(forms.ModelForm):
             ),
         }
 
-    # def clean_data_and_time(self):
-    #     time = self.cleaned_data.get("date", "time")
-    #     if time in [table.number for table in Table.objects.all()]:
-    #         if time in [table.number for table in Table.objects.all()]:
-    #             raise ValidationError("такой стол уже есть")
-    #         raise ValidationError("такой стол уже есть")
-    #     return time
+    def clean(self):
+        super().clean()
+        time = self.cleaned_data.get("time")
+        date = self.cleaned_data.get("date")
+        table = self.cleaned_data.get("table")
+
+        print(table, time, date)
+
+        orders = Order.objects.filter(table=table, date=date, time=time)
+        if orders.exists():
+            raise ValidationError("Стол уже заненят")

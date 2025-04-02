@@ -41,10 +41,9 @@ urlpatterns = [
     path("", include("restaurant.urls", namespace="table")),
     path("users/", include("users.urls", namespace="users")),
 
-    path(
-        "swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui",
-    ),
-    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
+    # Другие URL-шаблоны вашего проекта...
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
 if settings.DEBUG:
